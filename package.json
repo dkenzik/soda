@@ -1,7 +1,7 @@
 {
-  "name": "YOUR-PROJECT-NAME-HERE",
-  "description": "YOUR PROJECT DESCRIPTION HERE",
-  "author": "YOUR NAME <your@emailaddress.com>",
+  "name": "SODA Experiment",
+  "description": "The SODA Experiment",
+  "author": "SV <signupskm@gmail.com>",
   "version": "0.0.1",
   "dependencies": {
     "connect": "1.8.5",
@@ -15,5 +15,5 @@
 	"mocha": "*",
 	"should": "*"
   },
-  "engine": "node >= 0.6.6"
+  "engine": "node >= 0.6.7"
 }
