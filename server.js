@@ -59,9 +59,9 @@ io.sockets.on('connection', function(socket){
 server.get('/', function(req,res){
   res.render('index.jade', {
     locals : { 
-              title : 'Your Page Title'
-             ,description: 'Your Page Description'
-             ,author: 'Your Name'
+              title : 'SODA Experiment'
+             ,description: 'Welcome to the SODA Experiment. We\'re here to stay.'
+             ,author: 'SV'
              ,analyticssiteid: 'XXXXXXX' 
             }
   });

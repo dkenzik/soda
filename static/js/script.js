@@ -1,4 +1,4 @@
-/* Author: YOUR NAME HERE
+/* Author: Stanislav Venzerul
 */
 
 $(document).ready(function() {   
