@@ -2,6 +2,7 @@
 var connect = require('connect')
     , express = require('express')
     , io = require('socket.io')
+    , db = require('mongoose')
     , port = (process.env.PORT || 8081);
 
 //Setup Express
@@ -37,17 +38,17 @@ server.error(function(err, req, res, next){
 server.listen( port);
 
 //Setup Socket.IO
-var io = io.listen(server);
-io.sockets.on('connection', function(socket){
-  console.log('Client Connected');
-  socket.on('message', function(data){
-    socket.broadcast.emit('server_message',data);
-    socket.emit('server_message',data);
-  });
-  socket.on('disconnect', function(){
-    console.log('Client Disconnected.');
-  });
-});
+// var io = io.listen(server);
+// io.sockets.on('connection', function(socket){
+  // console.log('Client Connected');
+  // socket.on('message', function(data){
+    // socket.broadcast.emit('server_message',data);
+    // socket.emit('server_message',data);
+  // });
+  // socket.on('disconnect', function(){
+    // console.log('Client Disconnected.');
+  // });
+// });
 
 
 ///////////////////////////////////////////
@@ -65,6 +66,17 @@ server.get('/', function(req,res){
              ,analyticssiteid: 'XXXXXXX' 
             }
   });
+});
+server.get('/profile', function(req,res){
+	  res.render('profile.jade', {
+	    locals : { 
+	              title : 'SODA - Proile'
+	             ,description: 'Personal profile page.'
+	             ,author: 'SV'
+	             ,analyticssiteid: 'XXXXXXX'
+	             ,pageName: '#Username Profile'
+	            }
+	  });
 });
 
 

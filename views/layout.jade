@@ -18,14 +18,42 @@ html.no-js(lang='en')
     link(rel='stylesheet', href='/css/bootstrap.css')
     link(rel='stylesheet', href='/css/main.css')
     //-script(src='js/libs/modernizr-2.0.6.min.js')
-  body!=body
+  body
+    div.topbar
+      .fill
+        .container
+          a(class='brand', href='#') SODA Experiment
+          ul.nav
+            li.active: a(href='#') Home
+            li: a(href='profile.html') Profile
+            li: a(href='#contact') Search
+            li: a(href='#contact') Help
+          form(action='', class='pull-right')
+            input(class='input-small', type='text', placeholder='Username')
+            input(class='input-small', type='password', placeholder='Password')
+            button(class='btn', type='submit') Sign In
+    
+    .container
+      .content
+        .page-header
+          h1 
+            !=pageName
+        .row
+          .span10
+            !=body
+          .span4
+            h3 Secondary Content
+            
+      footer
+        p SinDesign 2011
+         
     script(src='//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
     script
       window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\\/script>')
     //-script(defer, src='js/plugins.js')
     script(defer, src='/js/script.js')
-    script(defer, src='/socket.io/socket.io.js')
-      script
+    //-script(defer, src='/socket.io/socket.io.js')
+    script
         var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview'],['_trackPageLoadTime']];
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
         g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
