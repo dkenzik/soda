@@ -1374,6 +1374,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   -ms-transition: none;
   -o-transition: none;
   transition: none;
+  margin-right: 7px;
 }
 .topbar input:-moz-placeholder {
   color: #e6e6e6;

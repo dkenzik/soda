@@ -3,22 +3,28 @@ var connect = require('connect')
     , express = require('express')
     , io = require('socket.io')
     , db = require('mongoose')
+    , routes = require('./routes')
+    , property = require('./property')
     , port = (process.env.PORT || 8081);
 
 //Setup Express
 var server = express.createServer();
 server.configure(function(){
     server.set('views', __dirname + '/views');
+    server.use(connect.logger({format : 'dev', immediate: true}));
     server.use(connect.bodyParser());
     server.use(express.cookieParser());
     server.use(express.session({ secret: "shhhhhhhhh!"}));
     server.use(connect.static(__dirname + '/static'));
-    server.use(server.router);
+    server.use(server.router);   
+});
+server.dynamicHelpers ({
+	page_title: property.creator()
 });
 
 //setup the errors
 server.error(function(err, req, res, next){
-    if (err instanceof NotFound) {
+    if (err instanceof routes.NotFound) {
         res.render('404.jade', { locals: { 
                   title : '404 - Not Found'
                  ,description: ''
@@ -37,64 +43,19 @@ server.error(function(err, req, res, next){
 });
 server.listen( port);
 
-//Setup Socket.IO
-// var io = io.listen(server);
-// io.sockets.on('connection', function(socket){
-  // console.log('Client Connected');
-  // socket.on('message', function(data){
-    // socket.broadcast.emit('server_message',data);
-    // socket.emit('server_message',data);
-  // });
-  // socket.on('disconnect', function(){
-    // console.log('Client Disconnected.');
-  // });
-// });
-
-
 ///////////////////////////////////////////
 //              Routes                   //
 ///////////////////////////////////////////
+server.get('/', routes.index);
+server.get('/profile', routes.profile);
+server.get('/search', routes.search);
+server.get('/help', routes.help);
+server.post('/signin', routes.signin);
 
-/////// ADD ALL YOUR ROUTES HERE  /////////
-
-server.get('/', function(req,res){
-  res.render('index.jade', {
-    locals : { 
-              title : 'SODA Experiment'
-             ,description: 'Welcome to the SODA Experiment. We\'re here to stay.'
-             ,author: 'SV'
-             ,analyticssiteid: 'XXXXXXX' 
-            }
-  });
-});
-server.get('/profile', function(req,res){
-	  res.render('profile.jade', {
-	    locals : { 
-	              title : 'SODA - Proile'
-	             ,description: 'Personal profile page.'
-	             ,author: 'SV'
-	             ,analyticssiteid: 'XXXXXXX'
-	             ,pageName: '#Username Profile'
-	            }
-	  });
-});
-
-
-//A Route for Creating a 500 Error (Useful to keep around)
-server.get('/500', function(req, res){
-    throw new Error('This is a 500 Error');
-});
-
+//A Route for 500 Error
+server.get('/500', routes.HTTP500);
 //The 404 Route (ALWAYS Keep this as the last route)
-server.get('/*', function(req, res){
-    throw new NotFound;
-});
-
-function NotFound(msg){
-    this.name = 'NotFound';
-    Error.call(this, msg);
-    Error.captureStackTrace(this, arguments.callee);
-}
+server.get('/*', routes.HTTP404);
 
 
 console.log('Listening on http://0.0.0.0:' + port );
