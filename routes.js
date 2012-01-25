@@ -5,8 +5,8 @@ exports.profile = function(req, res) {
 		locals : {
 			  title : 'SODA - Proile'
 			, description : 'Personal profile page.'
-			, author : 'SV'
-			, analyticssiteid : 'XXXXXXX'
+			//, flashMessage: req.flash()
+			, author : 'Stanislav Venzerul'
 		}
 	});
 }
@@ -16,8 +16,7 @@ exports.index = function(req, res) {
 		locals : {
 			  title : 'SODA Experiment'
 			, description : 'Welcome to the SODA Experiment. We\'re here to stay.'
-			, author : 'SV'
-			, analyticssiteid : 'XXXXXXX'
+			, author : 'Stanislav Venzerul'
 		}
 	});
 }
@@ -27,8 +26,7 @@ exports.search = function(req, res) {
 		locals : {
 			  title : 'SODA Experiment'
 			, description : 'Welcome to the SODA Experiment. We\'re here to stay.'
-			, author : 'SV'
-			, analyticssiteid : 'XXXXXXX'
+			, author : 'Stanislav Venzerul'
 		}
 	});
 }
@@ -38,8 +36,7 @@ exports.help = function(req, res) {
 		locals : {
 			  title : 'SODA Experiment'
 			, description : 'Welcome to the SODA Experiment. We\'re here to stay.'
-			, author : 'SV'
-			, analyticssiteid : 'XXXXXXX'
+			, author : 'Stanislav Venzerul'
 		}
 	});
 }
@@ -58,8 +55,7 @@ exports.signup = function(req, res) {
 		locals : {
 			  title : 'SODA Experiment'
 			, description : 'Welcome to the SODA Experiment. We\'re here to stay.'
-			, author : 'SV'
-			, analyticssiteid : 'XXXXXXX'
+			, author : 'Stanislav Venzerul'
 		}
 	});
 }

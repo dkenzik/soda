@@ -24,7 +24,7 @@ html.no-js(lang='en')
         .container
           a(class='brand', href='#') SODA Experiment
           ul.nav
-            li.active: a(href='/') Home
+            li: a(href='/') Home
             li: a(href='/profile') Profile
             li: a(href='/search') Search
             li: a(href='/help') Help
@@ -35,21 +35,28 @@ html.no-js(lang='en')
     
     .container
       .content
+        .profile-scroller
+            ul.media-grid
+                - for(var i=0; i < 8; i++) { 
+                li 
+                    a(href='/user/:profileid')
+                        img.thumbnail(src='img/pthumb.gif')
+                - }      
         .page-header
           h1 
             !=page_title.get()
         .row
-          .span10
+          .span12
             !=body
-          .span4
-            h3 Secondary Content
+          //.span4
+          //h4 Secondary Content
             
       footer
         p SinDesign 2011
          
     script(src='//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
     script
-      window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\\/script>')
+      window.jQuery || document.write('<script src="js/libs/jquery.js"><\\/script>')
     //-script(defer, src='js/plugins.js')
     script(defer, src='/js/script.js')
     //-script(defer, src='/socket.io/socket.io.js')

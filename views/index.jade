@@ -1,1 +1,6 @@
 - page_title.set('Welcome');
+if typeof flashMessage != 'undefined'
+    if flashMessage.error
+        div.alert-message.error= flashMessage.error
+    if flashMessage.info
+        div.alert-message.success= flashMessage.info

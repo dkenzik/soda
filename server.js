@@ -5,18 +5,20 @@ var connect = require('connect')
     , db = require('mongoose')
     , routes = require('./routes')
     , property = require('./property')
+    , flash_mw = require('./flash_mw')
     , port = (process.env.PORT || 8081);
 
 //Setup Express
 var server = express.createServer();
 server.configure(function(){
     server.set('views', __dirname + '/views');
-    server.use(connect.logger({format : 'dev', immediate: true}));
+    server.use(connect.logger({format : 'dev'}));
     server.use(connect.bodyParser());
     server.use(express.cookieParser());
-    server.use(express.session({ secret: "shhhhhhhhh!"}));
+    server.use(express.session({ secret: "QrCmInvoUYn5COjfzAYriypPDng5JOHOA0iTb3t"}));
     server.use(connect.static(__dirname + '/static'));
-    server.use(server.router);   
+    server.use(flash_mw.request_mw);
+    server.use(server.router);
 });
 server.dynamicHelpers ({
 	page_title: property.creator()
@@ -41,7 +43,6 @@ server.error(function(err, req, res, next){
                 },status: 500 });
     }
 });
-server.listen( port);
 
 ///////////////////////////////////////////
 //              Routes                   //
@@ -57,5 +58,7 @@ server.get('/500', routes.HTTP500);
 //The 404 Route (ALWAYS Keep this as the last route)
 server.get('/*', routes.HTTP404);
 
+
+server.listen( port);
 
 console.log('Listening on http://0.0.0.0:' + port );

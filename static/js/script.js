@@ -1,15 +1,14 @@
 /* Author: Stanislav Venzerul
-*/
+ */
 
-$(document).ready(function() {   
 
-  // var socket = io.connect();
-// 
-  // $('#sender').bind('click', function() {
-   // socket.emit('message', 'Message Sent on ' + new Date());     
-  // });
-// 
-  // socket.on('server_message', function(data){
-   // $('#reciever').append('<li>' + data + '</li>');  
-  // });
-});
+//Make the navigation link highlights work when clicking on the page. 
+$(document).ready(function() {
+	var str = location.href.toLowerCase();
+	$("ul.nav li a").each(function() {
+		if(str.indexOf(this.href.toLowerCase()) > -1) {
+			$("li.active").removeClass("active");
+			$(this).parent().addClass("active");
+		}
+	});
+})

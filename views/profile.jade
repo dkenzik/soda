@@ -1,2 +1,13 @@
 // Set the page title and need to replace the Username with the acutal un. 
 !=page_title.set('Username Profile')
+
+if typeof flashMessage != 'undefined'
+    if flashMessage.error
+        div.alert-message.error= flashMessage.error
+    if flashMessage.info
+        div.alert-message.success= flashMessage.info
+
+
+ul.media-grid
+    a(href='#')
+        img.thumbnail(src='img/profile.jpg')
