@@ -6,7 +6,7 @@ exports.profile = function(req, res) {
 			  title : 'SODA - Proile'
 			, description : 'Personal profile page.'
 			//, flashMessage: req.flash()
-			, author : 'Stanislav Venzerul'
+			, author : 'ckm2k1'
 		}
 	});
 }
@@ -16,7 +16,7 @@ exports.index = function(req, res) {
 		locals : {
 			  title : 'SODA Experiment'
 			, description : 'Welcome to the SODA Experiment. We\'re here to stay.'
-			, author : 'Stanislav Venzerul'
+			, author : 'ckm2k1'
 		}
 	});
 }
@@ -26,7 +26,7 @@ exports.search = function(req, res) {
 		locals : {
 			  title : 'SODA Experiment'
 			, description : 'Welcome to the SODA Experiment. We\'re here to stay.'
-			, author : 'Stanislav Venzerul'
+			, author : 'ckm2k1'
 		}
 	});
 }
@@ -36,7 +36,7 @@ exports.help = function(req, res) {
 		locals : {
 			  title : 'SODA Experiment'
 			, description : 'Welcome to the SODA Experiment. We\'re here to stay.'
-			, author : 'Stanislav Venzerul'
+			, author : 'ckm2k1'
 		}
 	});
 }
@@ -55,7 +55,7 @@ exports.signup = function(req, res) {
 		locals : {
 			  title : 'SODA Experiment'
 			, description : 'Welcome to the SODA Experiment. We\'re here to stay.'
-			, author : 'Stanislav Venzerul'
+			, author : 'ckm2k1'
 		}
 	});
 }
